@@ -12,18 +12,18 @@ import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
    const navigate = useNavigate(); 
-  const baseUrl = import.meta.env.VITE_API_URL;
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm({
-    resolver: yupResolver(signUpSchema),
-  });
-
-  const onSubmit = async (data) => {
-    try {
+   const {
+     register,
+     handleSubmit,
+     formState: { errors, isSubmitting },
+     reset,
+    } = useForm({
+      resolver: yupResolver(signUpSchema),
+    });
+    
+    const onSubmit = async (data) => {
+      try {
+      const baseUrl = import.meta.env.VITE_API_URL;
       const response = await fetch(`${baseUrl}/api/auth/signup`, {
         method: "POST",
         headers: {

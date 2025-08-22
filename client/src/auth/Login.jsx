@@ -10,8 +10,7 @@ import { useAuth } from "../context/AuthContext";
 const Login = () => {
   const { login } = useAuth(); 
   const navigate = useNavigate();
-  const baseUrl = import.meta.env.VITE_API_URL;
-
+  
   const {
     register,
     handleSubmit,
@@ -20,9 +19,10 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(loginSchema),
   });
-
+  
   const onSubmit = async (data) => {
     try {
+      const baseUrl = import.meta.env.VITE_API_URL;
       const res = await fetch(`${baseUrl}/api/auth/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

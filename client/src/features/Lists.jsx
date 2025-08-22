@@ -29,7 +29,8 @@ const Lists = () => {
   const fetchProperties = async (filters = {}) => {
     setLoading(true);
     try {
-      const response = await fetch(`${baseUrl}/api/property/all-properties`, {
+      const response = await fetch("https://techstudiointernshipaugust-betahouse.onrender.com/api/property/all-properties", {
+      // const response = await fetch(`${baseUrl}/api/property/all-properties`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

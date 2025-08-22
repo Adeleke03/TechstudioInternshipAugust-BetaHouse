@@ -16,7 +16,8 @@ const Hero = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/api/property/properties/search`, {
+      const response = await axios.get("https://techstudiointernshipaugust-betahouse.onrender.com/api/property/properties/search", {
+      // const response = await axios.get(`${baseUrl}/api/property/properties/search`, {
         params: {
           location,
           type,
