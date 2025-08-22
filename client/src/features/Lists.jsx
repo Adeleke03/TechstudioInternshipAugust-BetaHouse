@@ -6,9 +6,9 @@ import SwitchIcon from "../assets/Icon-3.png";
 import ShareIcon from "../assets/Icon-4.png";
 import HeartIcon from "../assets/Link.png";
 
-const baseUrl = import.meta.env.VITE_API_URL;
 
 const Lists = () => {
+  const baseUrl = import.meta.env.VITE_API_URL;
   const sortOptions = ["Default", "Rent", "Sale"];
   const propertyFilters = ["Ranch", "Contemporary", "Bungalow", "Duplex", "Flat"];
 

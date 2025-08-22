@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const baseUrl = import.meta.env.VITE_API_URL;
 
 const Hero = () => {
+  const baseUrl = import.meta.env.VITE_API_URL;
   const [location, setLocation] = useState("");
   const [type, setType] = useState("");
   const [bedroom, setBedroom] = useState(0);
