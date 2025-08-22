@@ -24,7 +24,7 @@ const SignUp = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch(`${baseUrl}/api/auth/sign-up`, {
+      const response = await fetch(`${baseUrl}/api/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const SignUp = () => {
       if (!result.success) {
         toast.error(result.errMsg || "Something went wrong!");
         return;
-      }
+      };
 
       toast.success(result.message || "Sign up successful!", { duration: 3000 });
 
