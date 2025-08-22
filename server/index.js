@@ -3,7 +3,9 @@ import { connectDB } from "./config/db.js";
 import authrouter from "./routes/authroute.js"
 import propertyrouter from "./routes/propertyroute.js"
 import dotenv from "dotenv";
-import cors from "cors"
+import cors from "cors";
+import bodyParser from "body-parser";
+
 
 
 const app = express();
@@ -13,6 +15,7 @@ dotenv.config();
 
 
 app.use(express.json());
+app.use(bodyParser.json());
 
 //Connecting db to index
 await connectDB()

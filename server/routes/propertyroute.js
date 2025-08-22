@@ -17,7 +17,7 @@ router.get('/all-properties', allProperties);
 router.get('/:propertyId', property);
 
 //search Properties
-router.get('/properties/search', searchProperty);
+router.post('/properties/search', searchProperty);
 
 //Filter Properties 
 router.get('/properties/filter', filterProperty)
