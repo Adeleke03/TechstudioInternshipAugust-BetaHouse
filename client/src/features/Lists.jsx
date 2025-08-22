@@ -30,7 +30,7 @@ const Lists = () => {
     setLoading(true);
     try {
       const response = await fetch(`${baseUrl}/api/property/all-properties`, {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
