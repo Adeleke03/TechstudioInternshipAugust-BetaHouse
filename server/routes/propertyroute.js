@@ -1,5 +1,5 @@
 import express from "express";
-import { allProperties, createProperty, properties, property, searchProperty } from "../controllers/propertyController.js";
+import { allProperties, createProperty, filterProperty, properties, property, searchProperty } from "../controllers/propertyController.js";
 
 
 const router = express.Router();
@@ -18,5 +18,8 @@ router.get('/:propertyId', property);
 
 //search Properties
 router.get('/properties/search', searchProperty);
+
+//Filter Properties 
+router.get('/properties/filter', filterProperty)
 
 export default router;

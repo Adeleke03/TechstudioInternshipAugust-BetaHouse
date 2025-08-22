@@ -52,25 +52,54 @@ export const property = async(req,res)=>{
 }
 
 //Search Property Controller
-export const searchProperty = async (req,res)=>{
-    try {
-        const {query} = req.body;
-        if (!query) {
-            res.status(400).json({success:false,errMsg:"Search query is required"});
-            return;
-        }
-        const properties = await PROPERTY.find({
-            $or:[
-                {location:{$regex:query, $options:"i"}},
-                {type:{$regex:query, $options:"i"}},
-            ]
-        });
-        if (!properties || properties.length === 0) {
-            res.status(404).json({success:false,errMsg:"No location or type found"});
-            return;
-        }
-        res.status(200).json({success:true,properties})
-    } catch (error) {
-       res.status(500).json(error.message);  
+export const searchProperty = async (req, res) => {
+  try {
+    const { location, type, bedroom } = req.body;
+
+    const filter = {};
+
+    if (location) {
+      filter.location = { $regex: location, $options: "i" };
     }
-}
+
+    if (type) {
+      filter.type = { $regex: type, $options: "i" };
+    }
+
+    if (bedroom !== undefined) {
+      filter.bedroom = bedroom; 
+    }
+
+    const properties = await PROPERTY.find(filter);
+
+    if (!properties || properties.length === 0) {
+      return res.status(404).json({ success: false, errMsg: "No matching properties found" });
+    }
+
+    return res.status(200).json({ success: true, properties });
+  } catch (error) {
+    return res.status(500).json({ success: false, errMsg: error.message });
+  }
+};
+
+
+//Filter Property Controllers (by purpose and/or type)
+export const filterProperty = async (req, res) => {
+  try {
+    const { purpose, type } = req.body;
+    const filter = {};
+
+    if (purpose) filter.purpose = purpose;
+    if (type) filter.type = type;
+
+    const results = await PROPERTY.find(filter);
+
+    if (!results.length) {
+      return res.status(404).json({ success: false, errMsg: "No matching properties found" });
+    }
+
+    res.status(200).json({ success: true, properties: results });
+  } catch (error) {
+    res.status(500).json({ success: false, errMsg: error.message });
+  }
+};

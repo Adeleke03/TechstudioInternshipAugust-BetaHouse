@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+body {
+  max-width: 1600px;
+  margin: 0 auto;
+  font-family: "Outfit", sans-serif;
+
+}
+
+@theme {
+  --font-Exo-2: "Exo 2", sans-serif;
+  --font-Poppins: "Poppins", sans-serif;
+}
+
+.wrapper{
+  @apply w-full  px-[14px] md:px-[40px] py-[10px] lg:px-[80px] xl:px-[80px] lg:py-[16px]   mx-auto 
+  /* @apply w-full mx-auto px-[20px] md:px-[40px] py-[10px] lg:px-[90px] xl:px-[130px] lg:py-[16px]; */
+
+}
