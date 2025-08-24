@@ -6,7 +6,6 @@ import SwitchIcon from "../assets/Icon-3.png";
 import ShareIcon from "../assets/Icon-4.png";
 import HeartIcon from "../assets/Link.png";
 
-
 const Lists = () => {
   const baseUrl = import.meta.env.VITE_API_URL;
   const sortOptions = ["Default", "Rent", "Sale"];
@@ -29,18 +28,20 @@ const Lists = () => {
   const fetchProperties = async (filters = {}) => {
     setLoading(true);
     try {
-      const response = await fetch("https://techstudiointernshipaugust-betahouse.onrender.com/api/property/all-properties", {
-      // const response = await fetch(`${baseUrl}/api/property/all-properties`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(filters),
-      });
+      const queryParams = new URLSearchParams(filters).toString();
+      const response = await fetch(
+        `https://techstudiointernshipaugust-betahouse.onrender.com/api/property/all-properties${queryParams ? `?${queryParams}` : ""}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await response.json();
       setProperties((data.properties || []).slice(0, itemsPerPage * totalPages));
       setCurrentPage(1);
-      setError(null); // Clear error on success
+      setError(null);
     } catch (err) {
       setError("Failed to fetch properties.");
     } finally {
